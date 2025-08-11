@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Noor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color:white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo img {
+            height: 45px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color:black;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffd4d4;
+        }
+
+        /* Hero Section */
+        .how-hero {
+            background: linear-gradient(to right, #ffe5e5, #f8cfcf);
+            text-align: center;
+            padding: 60px 20px;
+            color: #333;
+        }
+        .how-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #be0909;
+        }
+        .how-hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Roadmap Container */
+        .roadmap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 20px;
+            background: #fffaf5;
+            position: relative;
+        }
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: #be0909;
+            z-index: 0;
+        }
+
+        /* Step Style */
+        .step {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 220px;
+        }
+        .step-number {
+            display: inline-block;
+            background: #be0909;
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px #be0909;
+        }
+        .step h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #be0909;
+        }
+        .step p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .roadmap {
+                flex-direction: column;
+            }
+            .roadmap::before {
+                display: none;
+            }
+            .nav-links {
+                flex-direction: column;
+                background-color: #be0909;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 20px;
+                display: none;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: left;
+            background: none;
+            color: #666;
+            padding: 5px 20px;
+            margin-top: 30px;
+            font-size: 0.6rem; /* Very small size */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="noor-logo.png.png" alt="Noor Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="Materials.html">Materials & Quality</a></li>
+                <li><a href="PricingModel.html">Pricing</a></li>
+                <li><a href="TMO.html">Track My Order</a></li>
+                <li><a href="StyleStories.html">Style Stories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero how-hero">
+        <h1>How It Works</h1>
+        <p>Your journey to the perfect outfit in 4 simple steps.</p>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="roadmap">
+        <div class="step">
+            <span class="step-number">1</span>
+            <h2>Sign Up</h2>
+            <p>Create your account and tell us about your style preferences and needs.</p>
+        </div>
+        <div class="step">
+            <span class="step-number">2</span>
+            <h2>Personal Consultation</h2>
+            <p>Our fashion consultant will connect with you and map out your outfit journey.</p>
+        </div>
+        <div class="step">
+            <span class="step-number">3</span>
+            <h2>Design & Approval</h2>
+            <p>We’ll share the design and estimated price for your approval.</p>
+        </div>
+        <div class="step">
+            <span class="step-number">4</span>
+            <h2>Tailor & Deliver</h2>
+            <p>Once approved, we tailor your outfit and deliver it to your doorstep.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Noor. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

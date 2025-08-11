@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Inspiration - Noor</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="images/noor-logo.png.png">
+<style>
+  :root {
+    --noor-red: #be0909;
+  }
+  .parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+  .floating-shape {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  /* Elegant Heading */
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900">
+
+<!-- NAVBAR -->
+<nav class="flex items-center justify-between px-8 py-4 shadow-lg bg-white sticky top-0 z-50">
+  <div class="flex items-center space-x-3">
+    <img src="images/noor-logo.png.png" alt="Noor Logo" class="h-10">
+  </div>
+  <ul class="hidden md:flex items-center space-x-8 font-medium">
+    <li><a href="index.html" class="hover:text-[var(--noor-red)] transition">Home</a></li>
+    <li><a href="Materials.html" class="hover:text-[var(--noor-red)] transition">Materials & Quality</a></li>
+    <li><a href="PricingModel.html" class="hover:text-[var(--noor-red)] transition">Pricing</a></li>
+    <li><a href="TMO.html" class="hover:text-[var(--noor-red)] transition">Track My Order</a></li>
+    <li><a href="style-stories.html" class="hover:text-[var(--noor-red)] transition">Style Stories</a></li>
+  </ul>
+  <button onclick="window.location.href='get-started.html'" class="px-5 py-2 text-white rounded-full shadow-lg transition" style="background-color: var(--noor-red);">Get Started</button>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="relative h-[70vh] flex items-center justify-center parallax" style="background-image: url('about-us-banner.jpg'); background-color: var(--noor-red);">
+  <div class="absolute inset-0" style="background-color: rgba(190, 9, 9, 0.7);"></div>
+  <h1 class="relative about-heading" data-aos="fade-up">Our Inspiration</h1>
+</section>
+
+<!-- RED BORDER BOX SECTION -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <div class="border-4 rounded-xl p-10 shadow-2xl hover:scale-[1.02] transition" style="border-color: var(--noor-red); background: linear-gradient(to right, #fff5f5, #ffeaea);" data-aos="fade-up">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <img src="images/US.jpg" alt="Inspiration" class="rounded-lg shadow-lg hover:rotate-1 hover:scale-105 transform transition duration-500">
+      <div class="space-y-4 text-lg">
+        <p>The idea for Noor came from our own struggles with finding clothes that truly fit and flatter...</p>
+        <p>We also noticed another challenge: colors and styles that look stunning on a mannequin often don’t suit everyone’s skin tone, body shape, or personality...</p>
+        <p>That’s when we thought of Noor — a platform that connects people to experienced fashion designers and stylists...</p>
+        <p class="font-semibold">At Noor, our inspiration is simple: to make fashion personal, effortless, and perfectly you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CEO QUOTE SECTION -->
+<section class="max-w-4xl mx-auto px-6 py-12" data-aos="fade-left">
+  <div class="bg-white shadow-xl rounded-lg p-10 relative border-l-8" style="border-color: var(--noor-red);">
+    <div class="absolute -top-8 left-6 w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-lg floating-shape">
+      <img src="images/Avishi.jpg" alt="CEO" class="w-full h-full object-cover">
+    </div>
+    <blockquote class="mt-8">
+      <p class="text-xl italic text-gray-700">"Noor was born out of my own frustration with finding clothes that truly fit and felt right. Shopping often turned into a struggle...I still remember buying a so-called “ready-to-wear” kurti that ended up needing to be completely restitched before I could wear it."</p>
+      <footer class="mt-4 font-semibold" style="color: var(--noor-red);">—Avishi, Co-Founder & CEO, Noor</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="text-white py-16 text-center" style="background-color: var(--noor-red);" data-aos="zoom-in">
+  <h2 class="text-3xl font-bold mb-4">Ready to Experience Fashion Made Just for You?</h2>
+  <p class="mb-6">Join Noor today and redefine your style journey.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-100 py-12 mt-12">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 px-6 text-sm">
+    <div>
+      <h4 class="font-semibold mb-2">Contact Us</h4>
+      <p>Email: care@noor.com</p>
+      <p>Phone: +91-XXXXXXXXXX</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-2">Help Centre</h4>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:underline">FAQs</a></li>
+        <li><a href="#" class="hover:underline">Return & Refund Policies</a></li>
+        <li><a href="#" class="hover:underline">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-2">Join Our Community</h4>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:underline">Specialties</a></li>
+        <li><a href="StyleStories.html" class="hover:underline">Style Stories</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+</body>
+</html>

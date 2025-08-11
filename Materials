@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noor – Materials & Quality</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/noor-logo.png.png">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        background: #fff;
+        color: #333;
+    }
+    header {
+        background: white;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+    }
+    .cta-btn {
+        background: #d62828;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+
+    /* Section styling */
+    .materials-section {
+        padding: 3rem 1.5rem;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .section-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5rem;
+        color: #d62828;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .material {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+    .material.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .material img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .material img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .material-content {
+        flex: 1;
+    }
+    .material-content h3 {
+        color: #d62828;
+        margin-bottom: 0.5rem;
+    }
+    .material:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    /* Lock section */
+    .lock-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(to right, #ffe5e5, #f8cfcf);
+        border-radius: 10px;
+        margin-top: 3rem;
+    }
+    .lock-section h2 {
+        color: #d62828;
+        margin-bottom: 1rem;
+    }
+    .lock-section a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #d62828;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lock-section a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+        .material {
+            flex-direction: column !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="noor-logo.png.png" alt="Noor" style="height:60px;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Materials & Quality</a></li>
+                <li><a href="PricingModel.html">Pricing</a></li>
+                <li><a href="#signup" class="cta-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="materials-section">
+    <h2 class="section-title">Our Premium Fabrics</h2>
+
+    <!-- Example material block -->
+    <div class="material">
+        <img src="images/organza.jpg" alt="Organza with bead work & sequence">
+        <div class="material-content">
+            <h3>Organza with Bead Work & Sequence</h3>
+            <p>Luxurious organza adorned with delicate bead and sequin embroidery — perfect for bridal and festive outfits.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/torg" alt="Turkish Organza">
+        <div class="material-content">
+            <h3>Turkish Organza</h3>
+            <p>Imported fine organza with a soft yet crisp texture, known for its graceful drape.</p>
+        </div>
+    </div>
+
+    <!-- Repeat for all your materials -->
+    <!-- ... -->
+
+    <div class="lock-section">
+        <h2>Unlock to View More</h2>
+        <p>Create your Noor account to explore our complete fabric library.</p>
+        <a href="signup.html">Make an Account</a>
+    </div>
+</section>
+
+<script>
+    // Reveal on scroll animation
+    const materials = document.querySelectorAll('.material');
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        materials.forEach(mat => {
+            const boxTop = mat.getBoundingClientRect().top;
+            if (boxTop < triggerBottom) {
+                mat.classList.add('visible');
+            }
+        });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>

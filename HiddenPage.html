@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Instructors Only — Project Site</title>
+  <style>
+    :root{
+      --brand-red: #be0909;
+      --bg: #fff;
+      --text: #111;
+      --muted: #666;
+      --max-width: 900px;
+      --radius: 12px;
+      --card-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      --accent: var(--brand-red);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0;padding:40px;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      display:flex;justify-content:center;align-items:flex-start;
+    }
+
+    .container{width:100%;max-width:var(--max-width)}
+
+    /* Navigation Bar */
+    nav{
+      background:var(--accent);
+      color:#fff;
+      padding:12px 20px;
+      border-radius:var(--radius);
+      margin-bottom:20px;
+      box-shadow:var(--card-shadow);
+    }
+    nav h1{
+      margin:0;
+      font-size:22px;
+      font-weight:700;
+    }
+
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8b0303);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+    .card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--card-shadow);margin-bottom:16px}
+
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:12px 10px;text-align:left;border-bottom:1px solid #eee}
+    th{font-size:13px;color:var(--muted);font-weight:600}
+
+    .testimonial{border-left:4px solid var(--accent);padding:14px 18px;background:#fff7f7;border-radius:8px}
+    .testimonial p{margin:0}
+    .public-note{font-size:13px;color:var(--muted);margin-top:8px}
+
+    .muted{color:var(--muted);font-size:13px}
+
+    footer{margin-top:12px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:600px){
+      body{padding:20px}
+      .logo{width:48px;height:48px}
+      nav h1{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation Bar -->
+    <nav>
+      <h1>Hidden Page</h1>
+    </nav>
+
+    <header>
+      <div class="logo">AS</div>
+      <div>
+        <h1>Instructors-only: Project Site (Hidden)</h1>
+        <p class="lead">Only your instructor should view this page. Do not link publicly. (Obscure URL + server auth recommended)</p>
+      </div>
+    </header>
+
+    <section class="card" id="access-card">
+      <strong>Access control</strong>
+      <ul class="muted">
+        <li>This page includes a simple JS gate for demonstration. <em>Do not</em> rely on it for real security.</li>
+        <li>Server-side protection (HTTP basic auth, .htpasswd, or protected route) is strongly recommended. See deployment notes below.</li>
+      </ul>
+      <div style="margin-top:12px">
+        <label for="instructorKey" class="muted">Enter instructor key to view content:</label>
+        <input id="instructorKey" type="password" placeholder="instructor key" style="padding:8px;border-radius:6px;border:1px solid #ddd;margin-left:8px">
+        <button id="unlockBtn" style="margin-left:8px;padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer">Unlock</button>
+        <div id="accessMsg" class="muted" style="margin-top:8px"></div>
+      </div>
+    </section>
+
+    <main id="secret" style="display:none">
+      <section class="card">
+        <h2 style="color:var(--accent);margin-top:0">Team</h2>
+        <p class="muted">Project team and roles</p>
+        <table aria-label="team table">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Role</th>
+              <th>ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Avishi Balgangadhar</td>
+              <td>Back-End Coding</td>
+              <td>IPM05162</td>
+            </tr>
+            <tr>
+              <td>Nanditha Sunil</td>
+              <td>Front-End Coding</td>
+              <td>IPM05117</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2 style="color:var(--accent);margin-top:0">Design Philosophy</h2>
+        <p style="margin:0 0 10px" class="muted">Goals, choices, and reasoning that guided the site design</p>
+        <p>
+            Noor is built on the belief that fashion should be personal, inclusive, and effortless. Clothing is more than fabric — 
+            it’s self-expression, confidence, and comfort woven together. We aim to bridge the gap between style aspirations and 
+            real-life fitting challenges by combining expert styling with custom craftsmanship. Our philosophy stands on three pillars:
+        </p>
+        <ol>
+          <li><strong>Celebrating Individuality–</strong>No two bodies are alike, and neither should be their clothes.</li>
+          <li><strong>Empowering Accessibility–</strong>Everyone should have access to personalised fashion without needing to step into a designer showroom.</li>
+          <li><strong>Sustaining Local Talent–</strong>By collaborating with skilled local tailors and trusted fabric suppliers, Noor supports communities while ensuring premium quality.</li>
+        </ol>
+        <p>
+            Further, the colours that span across each page of the website shows resilience along with calmness. 
+            he deep red conveys passion, empowerment, and celebration, capturing the confidence Noor aims to instill in every client.
+            In cultural contexts, red is also associated with elegance, prosperity, and special occasions, making it the perfect symbol for clothing that makes people 
+            feel extraordinary. White balances this energy with purity, clarity, and sophistication, representing Noor’s transparent, client-focused approach. Together,
+            red and white create a striking contrast that is visually memorable, emotionally resonant, and timeless ensuring Noor feels both vibrant and refined across every platform.
+        </p>
+        
+      </section>
+
+      <section class="card">
+        <h2 style="color:var(--accent);margin-top:0">Consistency with main site</h2>
+        <p class="muted">How this hidden page matches the rest of the website:</p>
+        <ul>
+          <li>Uses the same brand token to match the primary accent color.</li>
+          <li>Typography and spacing mirror the public site via shared CSS variables (import the site's token file where possible).</li>
+          <li>Header and footer skeletons match publicly visible components — update the logo and links to match the live site before publishing to the instructor URL.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2 style="color:var(--accent);margin-top:0">Deployment & Access Notes</h2>
+        <p class="muted">Recommended steps before sharing with your instructor:</p>
+        <ol>
+          <li>Place file at an obscure URL, e.g. <code>/instructors-only-9f7b3a.html</code> (do not link from public pages).</li>
+          <li>Add server-side authentication. Example (Apache .htaccess):</li>
+        </ol>
+        <pre style="background:#f7f7f7;padding:10px;border-radius:8px;overflow:auto"># Apache (.htaccess)
+AuthType Basic
+AuthName "Instructors Only"
+AuthUserFile /path/to/.htpasswd
+Require valid-user
+</pre>
+        <p class="muted">Or for nginx: protect the location block with <code>auth_basic</code> and a generated password file.</p>
+        <p class="muted">If you cannot configure server auth, at minimum ensure the page has <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code> and keep the URL unlinked.</p>
+      </section>
+
+      <footer class="card">
+        <div class="muted">Instructor access note: For grading, share the full obscure URL with your instructor and (if used) the temporary key. Recommended: remove the file or revoke access after grading.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const GOOD_KEY = 'Vin@ySirIIM-r2025#';
+      const unlockBtn = document.getElementById('unlockBtn');
+      const keyInput = document.getElementById('instructorKey');
+      const accessMsg = document.getElementById('accessMsg');
+      const secret = document.getElementById('secret');
+      const accessCard = document.getElementById('access-card');
+
+      const params = new URLSearchParams(location.search);
+      if(params.get('key')===GOOD_KEY){
+        secret.style.display = '';
+        accessCard.style.display = 'none';
+      }
+
+      unlockBtn.addEventListener('click',()=>{
+        if(keyInput.value === GOOD_KEY){
+          secret.style.display = '';
+          accessCard.style.display = 'none';
+          accessMsg.textContent = '';
+        } else {
+          accessMsg.textContent = 'Invalid key — please ask your instructor for the one-time key.';
+        }
+        keyInput.value='';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Track My Order — Noor</title>
+  <link rel="icon" type="image/png" href="images/noor-logo.png.png">
+  <meta name="description" content="Track your Noor order by entering your Order ID to see real-time status, expected delivery and notes." />
+  <style>
+    :root{--red:#be0909;--muted:#6b7280;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter,ui-sans-serif,system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.4;margin:0;background:linear-gradient(180deg,#fff 0%, #fffaf6 100%);color:#0f172a}
+    .container{max-width:980px;margin:48px auto;padding:0 20px}
+
+    /* Exact navbar styles from About Us page */
+    .navbar {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--red);
+      text-decoration: none;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar ul li a {
+      text-decoration: none;
+      color: #0f172a;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .navbar ul li a:hover {
+      color: var(--red);
+    }
+
+    /* Track my order card */
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 8px 30px rgba(15,23,42,0.06)}
+    .form-row{display:flex;gap:12px;margin-top:18px}
+    input[type=text]{flex:1;padding:12px 14px;border:1px solid #e6e6e6;border-radius:10px;font-size:16px}
+    button.primary{background:var(--red);color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    button.clear{background:#fff;border:1px solid #e6e6e6;padding:8px 12px;border-radius:10px;cursor:pointer}
+    .hint{color:var(--muted);font-size:13px;margin-top:8px}
+
+    .result{margin-top:24px}
+    .status-row{display:flex;align-items:center;gap:16px}
+    .badge{padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px;color:#fff}
+    .status-processing{background:#f59e0b}
+    .status-stitching{background:#06b6d4}
+    .status-ready{background:#10b981}
+    .status-shipped{background:#3b82f6}
+    .status-delivered{background:#111827}
+
+    .meta{margin-top:12px;color:var(--muted);font-size:14px}
+
+    .timeline{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .step{flex:1;min-width:110px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #eef2f7;text-align:center;position:relative}
+    .step.completed{background:linear-gradient(180deg,#fff 0%,#f8fff6 100%);border-color:rgba(6,95,70,0.08)}
+    .step .dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-bottom:8px}
+    .step .title{font-size:13px;color:#0f172a}
+    .step .when{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+
+    .not-found{padding:18px;border-radius:10px;background:#fff6f6;border:1px solid #ffdede;color:#7f1d1d}
+
+    .notes{margin-top:14px;padding:12px;border-radius:8px;background:#fffdf7;border:1px solid #fff0d9}
+
+    @media (max-width:720px){.form-row{flex-direction:column}.step{min-width:80px}}
+
+    .step.active{box-shadow:0 6px 20px rgba(190,9,9,0.12);transform:translateY(-4px);transition:transform .25s}
+
+    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+
+    .loader{width:20px;height:20px;border-radius:50%;border:3px solid #ccc;border-top-color:var(--red);animation:spin .9s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .small{font-size:13px;color:var(--muted)}
+
+    .help-link{color:var(--red);text-decoration:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <!-- Navbar same as About Us but without Track My Order link -->
+  <nav class="navbar">
+    <img src="noor-logo.png.png" alt="Noor" style="height:60px;">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1 style="text-align:center; font-size:32px; margin:30px 0; font-family:'Playfair Display', serif; color:var(--red);">
+      Track Your Order
+    </h1>
+
+    <section class="card" aria-labelledby="track-heading">
+      <h2 id="track-heading" style="margin:0;font-size:16px">Track your order</h2>
+      <p class="hint">Find your Order ID in the confirmation message you received (e.g. <code>NR-2025-00123</code>).</p>
+
+      <div class="form-row">
+        <input id="orderIdInput" type="text" placeholder="Enter order id (e.g. NR-2025-00123)" aria-label="Order ID" />
+        <div style="display:flex;gap:8px;">
+          <button id="trackBtn" class="primary">Track</button>
+          <button id="clearBtn" class="clear">Clear</button>
+        </div>
+      </div>
+
+      <div id="message" class="hint" role="status" aria-live="polite"></div>
+      <div id="resultArea" class="result" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Noor — For queries email <a href="mailto:care@noor.com">care@noor.com</a>
+    </footer>
+  </div>
+
+<script>
+const ordersData = [
+  {
+    orderId: 'NR-2025-00123',
+    customer: 'Avishi B.',
+    status: 'Stitching',
+    expected: '2025-08-14',
+    notes: 'Sleeve length being altered as requested.',
+    poc: { name: 'Rina (Tailor)', phone: '+91-90000-00001', email: 'rina@noor.com' },
+    history: [
+      { status: 'Processing', date: '2025-08-01' },
+      { status: 'Measurement', date: '2025-08-02' },
+      { status: 'Stitching', date: '2025-08-05' }
+    ]
+  },
+  {
+    orderId: 'NR-2025-00124',
+    customer: 'Rohit K.',
+    status: 'Ready to ship',
+    expected: '2025-08-10',
+    notes: 'Quality check passed. Packing tomorrow.',
+    poc: { name: 'Asha (POC)', phone: '+91-90000-00002', email: 'asha@noor.com' },
+    history: [
+      { status: 'Processing', date: '2025-07-30' },
+      { status: 'Measurement', date: '2025-07-31' },
+      { status: 'Stitching', date: '2025-08-02' },
+      { status: 'Quality Check', date: '2025-08-09' }
+    ]
+  },
+  {
+    orderId: 'NR-2025-00125',
+    customer: 'Meera S.',
+    status: 'Delivered',
+    expected: '2025-08-05',
+    notes: 'Delivered by courier. Left at reception.',
+    poc: { name: 'Delivery Team', phone: '+91-90000-00003', email: 'logistics@noor.com' },
+    history: [
+      { status: 'Processing', date: '2025-07-20' },
+      { status: 'Measurement', date: '2025-07-21' },
+      { status: 'Stitching', date: '2025-07-25' },
+      { status: 'Quality Check', date: '2025-07-29' },
+      { status: 'Shipped', date: '2025-08-03' },
+      { status: 'Delivered', date: '2025-08-05' }
+    ]
+  }
+]
+const STAGES = ['Processing','Measurement','Stitching','Quality Check','Ready to ship','Shipped','Out for delivery','Delivered']
+
+const orderIdInput = document.getElementById('orderIdInput')
+const trackBtn = document.getElementById('trackBtn')
+const clearBtn = document.getElementById('clearBtn')
+const message = document.getElementById('message')
+const resultArea = document.getElementById('resultArea')
+
+function formatDate(d){
+  if(!d) return '—'
+  const dt = new Date(d)
+  return dt.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})
+}
+function findOrderLocal(id){
+  const key = id.trim().toUpperCase()
+  return ordersData.find(o=>o.orderId.toUpperCase()===key)
+}
+function clearResult(){
+  resultArea.innerHTML = ''
+  message.textContent = ''
+}
+function showLoader(){
+  message.innerHTML = '<div style="display:flex;gap:8px;align-items:center"><div class="loader" aria-hidden></div><div>Looking up your order...</div></div>'
+}
+function showNotFound(id){
+  resultArea.innerHTML = `<div class="not-found"><strong>Order not found:</strong> ${id}. Please check your Order ID.<br/>If you still need help, email <a href=\"mailto:care@noor.com\">care@noor.com</a>.</div>`
+}
+function statusToBadgeClass(status){
+  const s = status.toLowerCase()
+  if(s.includes('process')) return 'status-processing'
+  if(s.includes('stitch')) return 'status-stitching'
+  if(s.includes('ready')) return 'status-ready'
+  if(s.includes('ship')||s.includes('shipped')) return 'status-shipped'
+  if(s.includes('deliver')||s.includes('delivered')) return 'status-delivered'
+  return 'status-processing'
+}
+function renderOrder(order){
+  const badgeClass = statusToBadgeClass(order.status)
+  const html = []
+  html.push(`<div class="status-row"><div style="flex:1"><strong>Order ID:</strong> <span style="font-weight:700">${order.orderId}</span><div class=\"meta small\">Customer: ${order.customer}</div></div><div style=\"text-align:right\"><div class=\"badge ${badgeClass}\">${order.status}</div><div class=\"meta\">Expected: ${formatDate(order.expected)}</div></div></div>`)
+  html.push('<div class="timeline">')
+  STAGES.forEach(stage=>{
+    const done = order.history && order.history.some(h=>h.status.toLowerCase()===stage.toLowerCase())
+    const when = order.history && order.history.find(h=>h.status.toLowerCase()===stage.toLowerCase())
+    const cls = 'step' + (done ? ' completed' : '') + (stage.toLowerCase()===order.status.toLowerCase() ? ' active' : '')
+    html.push(`<div class="${cls}"><div class="dot" style="background:${done? 'var(--red)':'#cbd5e1'}"></div><div class="title">${stage}</div><div class="when">${when? formatDate(when.date) : ''}</div></div>`)
+  })
+  html.push('</div>')
+  html.push(`<div class="notes"><strong>Notes:</strong> ${order.notes || '—'}</div>`)
+  html.push(`<div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px"><div class="small"><strong>POC:</strong> ${order.poc.name}<br/>${order.poc.phone} · <a href="mailto:${order.poc.email}">${order.poc.email}</a></div><div><button class="clear" onclick="copyOrderId('${order.orderId}')">Copy Order ID</button></div></div>`)
+  resultArea.innerHTML = html.join('\n')
+}
+function copyOrderId(id){
+  navigator.clipboard && navigator.clipboard.writeText(id).then(()=>{
+    message.textContent = 'Order ID copied to clipboard.'
+    setTimeout(()=>message.textContent='',2000)
+  }).catch(()=>{
+    message.textContent = 'Unable to copy. Please copy manually.'
+  })
+}
+async function track(){
+  clearResult()
+  const id = orderIdInput.value.trim()
+  if(!id){ message.textContent = 'Please enter an Order ID.'; return }
+  showLoader()
+  await new Promise(r=>setTimeout(r,600))
+  const order = findOrderLocal(id)
+  if(!order){ showNotFound(id); return }
+  message.textContent = ''
+  renderOrder(order)
+}
+document.getElementById('year').textContent = new Date().getFullYear()
+trackBtn.addEventListener('click', track)
+clearBtn.addEventListener('click', ()=>{ orderIdInput.value=''; clearResult(); orderIdInput.focus() })
+orderIdInput.addEventListener('keyup', (e)=>{ if(e.key==='Enter') track() })
+</script>
+</body>
+</html>

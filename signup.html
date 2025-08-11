@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Noor — Create Account</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/noor-logo.png.png">
+<style>
+  :root{
+    --brand:#d62828;
+    --muted:#666;
+    --bg:#fff;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins',sans-serif;margin:0;background:var(--bg);color:#222;padding:2rem;}
+  header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+  header img{height:48px}
+  .card{max-width:540px;margin:auto;background:#fff;border:1px solid #eee;padding:2rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.04)}
+  h1{color:var(--brand);font-size:1.6rem;margin-bottom:0.5rem;font-weight:700}
+  p.lead{color:var(--muted);margin-bottom:1.2rem}
+  form{display:grid;gap:0.75rem}
+  label{font-size:0.9rem;color:#444}
+  input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
+    width:100%;padding:0.8rem;border-radius:8px;border:1px solid #ddd;outline:none;font-size:0.95rem;
+  }
+  .row{display:flex;gap:0.75rem}
+  .row .col{flex:1}
+  .note{font-size:0.85rem;color:var(--muted);margin-top:0.25rem}
+  .error{color:#b30000;font-size:0.85rem;margin-top:0.25rem}
+  .actions{display:flex;gap:0.75rem;margin-top:1rem;align-items:center}
+  .btn{background:var(--brand);color:#fff;padding:0.7rem 1rem;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+  .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+  .success{background:#edfff2;border:1px solid #c9f0d6;padding:0.8rem;border-radius:8px;color:#086a2f;margin-top:1rem}
+  .pw-meter{height:8px;border-radius:6px;background:#eee;margin-top:6px;overflow:hidden}
+  .pw-meter > i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a00,#d62828)}
+  .small{font-size:0.85rem;color:var(--muted)}
+  footer{margin-top:1rem;text-align:center;color:var(--muted);font-size:0.9rem}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="noor-logo.png.png" alt="Noor logo">
+  <div>
+    <div style="font-family:'Dancing Script',cursive;color:var(--brand);font-size:1.15rem">Noor</div>
+    <div style="font-size:0.85rem;color:#777">Your Fashion Advisor</div>
+  </div>
+</header>
+
+<main class="card" role="main">
+  <h1>Create your Noor account</h1>
+  <p class="lead">Sign up to unlock premium materials, save favourites and continue designing.</p>
+
+  <form id="signupForm" autocomplete="on" novalidate>
+    <div>
+      <label for="fullname">Full name</label>
+      <input id="fullname" name="fullname" type="text" placeholder="Eg: Saanvi Kumar" required>
+      <div id="err-name" class="error" style="display:none"></div>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+      <div id="err-email" class="error" style="display:none"></div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" placeholder="10-digit mobile" required>
+        <div id="err-phone" class="error" style="display:none"></div>
+      </div>
+      <div class="col">
+        <label for="ref">Referral (optional)</label>
+        <input id="ref" name="ref" type="text" placeholder="How did you hear about us?">
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Create password</label>
+      <input id="password" name="password" type="password" placeholder="At least 8 characters" required>
+      <div class="pw-meter" aria-hidden="true"><i id="pwBar" style="width:0%"></i></div>
+      <div id="err-password" class="error" style="display:none"></div>
+      <div class="note small">Use 8+ characters, include letters and numbers for a stronger password.</div>
+    </div>
+
+    <div>
+      <label for="confirm">Confirm password</label>
+      <input id="confirm" name="confirm" type="password" placeholder="Repeat your password" required>
+      <div id="err-confirm" class="error" style="display:none"></div>
+    </div>
+
+    <div>
+      <label><input id="accept" type="checkbox" required> I agree to Noor's <a href="#" style="color:var(--brand)">Terms & Conditions</a></label>
+      <div id="err-accept" class="error" style="display:none"></div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn">Create Account</button>
+      <button type="button" id="cancelBtn" class="btn ghost">Cancel</button>
+    </div>
+
+    <div id="success" class="success" style="display:none">
+      Account created! Redirecting to Materials… If you are not redirected, <a id="goMaterials" href="Materials.html">click here</a>.
+    </div>
+  </form>
+
+  <footer>
+    Already have an account? <a href="login.html" style="color:var(--brand)">Sign in</a>
+  </footer>
+</main>
+
+<script>
+  const form = document.getElementById('signupForm');
+  const fullname = document.getElementById('fullname');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+  const password = document.getElementById('password');
+  const confirm = document.getElementById('confirm');
+  const accept = document.getElementById('accept');
+  const successBox = document.getElementById('success');
+  const pwBar = document.getElementById('pwBar');
+
+  // simple validators
+  const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  const isPhone = (v) => /^\d{10}$/.test(v.replace(/\s+/g,'')); // indian 10-digit check
+  const pwScore = (pw) => {
+    let score = 0;
+    if (pw.length >= 8) score += 30;
+    if (/[A-Z]/.test(pw)) score += 20;
+    if (/[a-z]/.test(pw)) score += 20;
+    if (/\d/.test(pw)) score += 20;
+    if (/[^A-Za-z0-9]/.test(pw)) score += 10;
+    return Math.min(100, score);
+  };
+
+  // live password meter
+  password.addEventListener('input', () => {
+    const percent = pwScore(password.value);
+    pwBar.style.width = percent + '%';
+    if (percent < 40) pwBar.style.background = 'linear-gradient(90deg,#ff8a00,#ff4d4d)';
+    else if (percent < 70) pwBar.style.background = 'linear-gradient(90deg,#ffd24a,#ff8a00)';
+    else pwBar.style.background = 'linear-gradient(90deg,#9be15d,#0bd318)';
+  });
+
+  // clear error helper
+  function showError(id, msg){
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.style.display = msg ? 'block' : 'none';
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // reset errors
+    showError('err-name',''); showError('err-email',''); showError('err-phone','');
+    showError('err-password',''); showError('err-confirm',''); showError('err-accept','');
+
+    let ok = true;
+    if (!fullname.value.trim() || fullname.value.trim().length < 2){
+      showError('err-name','Please enter your full name (2+ characters).'); ok = false;
+    }
+    if (!isEmail(email.value.trim())){
+      showError('err-email','Please enter a valid email.'); ok = false;
+    }
+    if (!isPhone(phone.value.trim())){
+      showError('err-phone','Please enter a valid 10-digit phone number.'); ok = false;
+    }
+    if (pwScore(password.value) < 40){
+      showError('err-password','Choose a stronger password (at least 8 chars, mix letters and numbers).'); ok = false;
+    }
+    if (password.value !== confirm.value){
+      showError('err-confirm','Passwords do not match.'); ok = false;
+    }
+    if (!accept.checked){
+      showError('err-accept','You must accept terms to proceed.'); ok = false;
+    }
+
+    if (!ok) return;
+
+    // === Simulation of account creation ===
+    // Save minimal profile in localStorage (DO NOT store real passwords in production)
+    const profile = {
+      name: fullname.value.trim(),
+      email: email.value.trim().toLowerCase(),
+      phone: phone.value.trim(),
+      createdAt: new Date().toISOString()
+    };
+    // store profile and unlocked flag
+    localStorage.setItem('noor_user', JSON.stringify(profile));
+    localStorage.setItem('noor_unlocked', '1'); // Materials page will check this
+
+    // show success message and redirect after a short pause
+    successBox.style.display = 'block';
+    setTimeout(() => {
+      // redirect back to materials page (change if path differs)
+      window.location.href = 'Materials.html?unlocked=1';
+    }, 1200);
+  });
+
+  // cancel = go back
+  document.getElementById('cancelBtn').addEventListener('click', () => {
+    window.history.back();
+  });
+</script>
+
+</body>
+</html>

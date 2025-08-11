@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor – Your Fashion Concierge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; }
+    header { background: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: #d62828; }
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; }
+    .cta-btn { background: #d62828; color: white; padding: 0.5rem 1rem; border-radius: 5px; }
+
+    /* Hero */
+    .hero { background: #ffe5e5; padding: 4rem 2rem; text-align: center; }
+    .hero h1 { font-size: 2rem; color: #d62828; }
+    .hero p { margin: 1rem 0; font-size: 1.1rem; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .hero-buttons a { padding: 0.75rem 1.5rem; border-radius: 5px; font-weight: 500; text-decoration: none; }
+    .btn-primary { background: #d62828; color: white; }
+    .btn-outline { border: 2px solid #d62828; color: #d62828; }
+    #why {
+        padding : 3rem 2rem;
+        text-align: center;
+    }
+    .why-us {
+        padding: 3rem 2rem;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        text-align: center;
+    }
+    /* heading of why us*/
+    .section-title {
+        font-family: 'Dancing Script', cursive; /* Stylish font you wanted */
+        font-size: 2.5rem;
+        color: #d62828;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* Trial */
+    .trial { background: #d62828; color: white; text-align: center; padding: 3rem 2rem; }
+    .trial h2 { margin-bottom: 1rem; }
+    .trial a { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: white; color: #d62828; border-radius: 5px; text-decoration: none; font-weight: 500; }
+
+    /* Reviews */
+    .reviews { padding: 3rem 2rem; background: #f9f9f9; }
+    .review-list { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .review { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .review img { width: 100%; border-radius: 8px; }
+    .stars { color: gold; margin: 0.5rem 0; }
+
+    /* Footer */
+    footer { background: #333; color: white; padding: 2rem; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: #fff; text-decoration: none; }
+
+    /* Live Chat */
+    .live-chat { position: fixed; bottom: 20px; right: 20px; background: #d62828; color: white; padding: 0.75rem 1rem; border-radius: 50px; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: white; position: absolute; top: 60px; right: 20px; padding: 1rem; border: 1px solid #eee; }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; cursor: pointer; }
+    }
+    @media (min-width: 769px) {
+      .menu-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="noor-logo.png" alt="Noor" style="height:40px;">
+        </div>
+      <div class="menu-toggle">☰</div>
+      <nav>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#materials">Materials & Quality</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#track">Track My Order</a></li>
+          <li><a href="#stories">Style Stories</a></li>
+          <li><a href="#signup" class="cta-btn">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Your Personal Fashion Consultant + Tailoring Service</h1>
+    <p>From concept to doorstep — Noor ensures your outfit fits your body, style, and timeline perfectly.</p>
+    <div class="hero-buttons">
+      <a href="#how" class="btn-outline">Explore How It Works</a>
+    </div>
+  </section>
+    
+  <section id="why">
+    <h2 class="section-title">Why Us?</h2>
+    <div class="why-us">
+        <div>
+            <h3>Personalized Design</h3>
+            <p>Outfits tailored to your body type & style preferences.</p>
+        </div>
+        <div>
+            <h3>End-to-End Service</h3>
+            <p>From fabric sourcing to doorstep delivery.</p>
+        </div>
+        <div>
+            <h3>Fit Guarantee</h3>
+            <p>Up to 2 free alterations if needed.</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="trial" id="trial">
+    <h2>Try Noor for Just ₹250</h2>
+    <p>Get 3 personalized sessions with a fashion designer, material recommendations, and complete outfit planning.</p>
+    <a href="#signup">Book My Trial</a>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <h2 style="text-align:center; margin-bottom: 2rem;">What Our Clients Say</h2>
+    <div class="review-list">
+      <div class="review">
+        <img src="https://via.placeholder.com/300x200" alt="Client">
+        <div class="stars">★★★★★</div>
+        <p>"Noor made my wedding outfit exactly how I dreamed it!"</p>
+      </div>
+      <div class="review">
+        <img src="https://via.placeholder.com/300x200" alt="Client">
+        <div class="stars">★★★★★</div>
+        <p>"Best tailoring experience I've had. Highly recommended."</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">About Noor</a>
+      <a href="#">FAQ</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+    <p style="margin-top:1rem;">© 2025 Noor. All rights reserved.</p>
+  </footer>
+
+  <div class="live-chat">💬 Chat</div>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

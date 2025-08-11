@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noor – Materials & Quality</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/noor-logo.png.png">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        background: #fff;
+        color: #333;
+    }
+    header {
+        background: white;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+    }
+    .cta-btn {
+        background: #d62828;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+
+    /* Section styling */
+    .materials-section {
+        padding: 3rem 1.5rem;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .section-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5rem;
+        color: #d62828;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .material {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+    .material.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .material img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .material img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .material-content {
+        flex: 1;
+    }
+    .material-content h3 {
+        color: #d62828;
+        margin-bottom: 0.5rem;
+    }
+    .material:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    /* Lock section */
+    .lock-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(to right, #ffe5e5, #f8cfcf);
+        border-radius: 10px;
+        margin-top: 3rem;
+    }
+    .lock-section h2 {
+        color: #d62828;
+        margin-bottom: 1rem;
+    }
+    .lock-section a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #d62828;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lock-section a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+        .material {
+            flex-direction: column !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="noor-logo.png.png" alt="Noor" style="height:60px;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Materials & Quality</a></li>
+                <li><a href="PricingModel.html">Pricing</a></li>
+                <li><a href="TMO.html">Track My Order</a></li>
+                <li><a href="#">Style Stories</a></li>
+                <li><a href="#signup" class="cta-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="materials-section">
+    <h2 class="section-title">Our Premium Fabrics</h2>
+
+    <!-- Example material block -->
+    <div class="material">
+        <img src="images/organza.jpg" alt="Organza with bead work & sequence">
+        <div class="material-content">
+            <h3>Organza with Bead Work & Sequence</h3>
+            <p>Organza with bead work combines the sheer elegance of organza with intricate hand-beaded embellishments. The beads add texture, sparkle, and a luxurious touch, making it ideal for festive wear, bridal outfits, and statement pieces. Lightweight yet structured, it drapes beautifully and enhances the charm of sarees, lehengas, and evening gowns.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/torg" alt="Turkish Organza">
+        <div class="material-content">
+            <h3>Turkish Organza</h3>
+            <p>Turkish organza is known for its exceptional softness, fine weave, and rich sheen.
+                Unlike regular organza, it offers a more fluid drape while retaining its signature crispness.
+                Perfect for designer sarees, anarkalis, and gowns, it brings an understated elegance suitable for weddings,
+                receptions, and premium fashion ensembles
+            </p>
+        </div>
+    </div>
+    <div class="material">
+        <img src="images/crushed" alt="Crushed Banarasi Tissue">
+        <div class="material-content">
+            <h3>Crushed Banarasi Tissue</h3>
+            <p>ICrushed Banarasi tissue fabric blends the grandeur of Banarasi weaving with a textured, crushed finish.
+                It reflects light beautifully, offering a regal shimmer. Lightweight yet festive, it’s perfect for sarees,
+                dupattas, and lehengas, creating a royal look with minimal effort and maximum sophistication for traditional 
+                celebrations.
+            </p>
+        </div>
+    </div>
+    <div class="material">
+        <img src="images/soft" alt="Soft Organza">
+        <div class="material-content">
+            <h3>Soft Organza</h3>
+            <p>Soft organza offers the delicacy of organza with a smoother, more supple feel. It drapes effortlessly, 
+                making it perfect for flowy sarees, dresses, and dupattas. Its translucent elegance works well for layering 
+                and embroidery, ideal for both daytime functions and evening events, giving a graceful, ethereal vibe.
+            </p>
+        </div>
+    </div>
+    <div class="material">
+        <img src="images/crepe.jpg" alt="Crepe">
+        <div class="material-content">
+            <h3>Crepe</h3>
+            <p>Crepe fabric is characterized by its slightly crinkled texture and soft, fluid drape. Comfortable yet stylish, it
+                works beautifully for dresses, kurtas, and formal wear. Its matte finish offers understated elegance, 
+                while the fabric’s versatility makes it equally suitable for both casual and festive outfits across seasons.
+            </p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/george" alt="Georgette">
+        <div class="material-content">
+            <h3>Georgette</h3>
+            <p> Georgette is a lightweight, sheer fabric with a slightly grainy texture and a fluid fall. Known for its comfort and flow, 
+                it’s ideal for sarees, gowns, and layered outfits.Georgette is perfect for embroidery and embellishment, making it a popular
+                choice for festive and semi-formal attire.
+            </p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/net.jpg" alt="Net → Dyeable Net → Worked Net">
+        <div class="material-content">
+            <h3>Net → Dyeable Net → Worked Net</h3>
+            <p>From plain net ready for custom dyeing to heavily worked embroidered versions, this category covers versatile choices for layering and creating volume. These fabrics are widely used for bridal dupattas, gowns, and lehenga canopies, giving a lightweight yet dramatic finish.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/netkota" alt="Net Kotta Material (starting ₹85)">
+        <div class="material-content">
+            <h3>Net Kotta Material (starting ₹85)</h3>
+            <p>Affordable yet stylish, Net Kotta material offers a textured net feel with added durability. Perfect for budget-friendly event wear or everyday dupattas, it balances lightness with structure, making it a popular choice for decorative layering and subtle design accents.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/crispy.jpg" alt="Crispy Georgette">
+        <div class="material-content">
+            <h3>Crispy Georgette</h3>
+            <p>This georgette variant has a crisp hand feel and subtle crepe texture, offering a firm drape that still moves gracefully. Perfect for structured sarees, layered dresses, and blouses, it adds a refined, polished finish to any tailored garment.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/chiffon.jpg" alt="Chiffon">
+        <div class="material-content">
+            <h3>Chiffon</h3>
+            <p>Soft, lightweight, and sheer, chiffon is perfect for delicate drapes and flowing silhouettes. It’s often used for dupattas, sarees, and layered dresses, creating an ethereal, dreamy look while remaining comfortable for all-day wear.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/semi" alt="Semi Tussar">
+        <div class="material-content">
+            <h3>Semi Tussar</h3>
+            <p>Semi tussar blends silk’s sheen with a slightly coarse texture, offering the look of pure tussar at a more affordable price. It’s perfect for sarees, kurtas, and festive wear, balancing tradition with practical value.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/tussar" alt="Tussar Silk">
+        <div class="material-content">
+            <h3>Tussar Silk</h3>
+            <p>Known for its rich texture and natural golden hue, tussar silk is a traditional luxury fabric. It’s breathable, durable, and perfect for festive sarees, dupattas, and high-end salwar suits that demand an elegant, timeless appeal.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/uppada.jpg" alt="Upada Silk">
+        <div class="material-content">
+            <h3>Uppada Silk</h3>
+            <p>Hailing from Andhra Pradesh, Uppada silk is known for its lightweight feel and luxurious shine. Often used for sarees and evening wear, it delivers elegance without heaviness, making it a preferred choice for special occasions.</p>
+        </div>
+    </div>
+
+    <div class="material">
+        <img src="images/vidharbha" alt="Vidarbha Silk">
+        <div class="material-content">
+            <h3>Vidarbha Silk</h3>
+            <p>Originating from the Vidarbha region of Maharashtra, this silk is prized for its fine texture and vibrant colors. It’s a cultural heritage fabric, often seen in traditional sarees and festive outfits, symbolizing grace and rich craftsmanship.</p>
+        </div>
+    </div>
+
+    <!-- Male Fabric Block 1 -->
+    <div class="material">
+        <img src="images/linen.jpg" alt="Linen">
+        <div class="material-content">
+            <h3>Linen</h3>
+            <p>
+                Linen is a breathable and lightweight natural fabric, perfect for men's summer outfits. 
+                It offers a crisp yet relaxed look, making it ideal for shirts, kurtas, and blazers. 
+                Its moisture-wicking properties ensure comfort in warm weather, while its timeless texture 
+                adds sophistication to both casual and formal styles.
+            </p>
+        </div>
+    </div>
+
+    <!-- Male Fabric Block 2 -->
+    <div class="material">
+        <img src="images/cotton.jpg" alt="Cotton Blend" class="material-image">
+        <div class="material-content">
+            <h3>Cotton Blend</h3>
+            <p>
+                Cotton blends combine the comfort of cotton with the durability and structure of synthetic 
+                fibers. This makes them perfect for men's trousers, jackets, and tailored shirts. They resist 
+                wrinkles better than pure cotton and maintain a polished appearance, making them suitable for 
+                both everyday wear and special occasions.
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- Repeat for all your materials -->
+    <!-- ... -->
+
+    <div class="lock-section">
+        <h2>Unlock to View More</h2>
+        <p>Create your Noor account to explore our complete fabric library.</p>
+        <a href="signup.html">Make an Account</a>
+    </div>
+</section>
+
+<script>
+    // Reveal on scroll animation
+    const materials = document.querySelectorAll('.material');
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        materials.forEach(mat => {
+            const boxTop = mat.getBoundingClientRect().top;
+            if (boxTop < triggerBottom) {
+                mat.classList.add('visible');
+            }
+        });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>

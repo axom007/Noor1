@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noor — Pricing</title>
+  <style>
+    :root{
+      --accent:#be0909; /* Vivid Red */
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f8fafc;
+      --glass: rgba(255,255,255,0.7);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fbfbff 0%, #f8fafc 100%);color:#0f172a}
+    header{padding:28px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .site-title{font-size:18px;font-weight:700}
+
+    .container{max-width:1080px;margin:0 auto;padding:12px}
+    .hero{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      align-items:center;
+      padding:26px 12px;
+      border-radius:18px;
+      background:linear-gradient(
+        90deg,
+        rgba(190, 9, 9, 0.06),   /* red tone */
+        rgba(190, 9, 9, 0.02)    /* lighter red tone */
+      );
+    }
+    .hero-left{flex:1 1 360px}
+    .hero-right{flex:0 1 320px}
+    .hero h1{margin:0;font-size:28px}
+    .hero p{margin:8px 0;color:var(--muted)}
+
+    /* Pricing cards */
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:18px
+    }
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.06);
+      border:1px solid rgba(15,23,42,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(2,6,23,0.12);
+    }
+    .card h3{margin:0 0 6px 0}
+    .price{font-weight:700;font-size:20px;color:var(--accent)}
+    .range{color:var(--muted);margin-top:6px}
+    .list{margin:10px 0 0 0;padding:0;list-style:none;color:var(--muted)}
+    .note{font-size:13px;color:var(--muted);margin-top:10px}
+
+    /* CTA */
+    .cta{display:flex;gap:10px;margin-top:14px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(190, 9, 9, 0.12)}
+
+    /* Estimate widget */
+    .estimate{margin-top:20px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbff);border:1px solid rgba(15,23,42,0.03)}
+    .row{display:flex;gap:8px;align-items:center}
+    label{font-size:14px;color:#0f172a}
+    select,input[type=checkbox]{padding:8px;border-radius:8px;border:1px solid #e6e9ef}
+
+    footer{padding:30px 12px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.4);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal{background:white;padding:20px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 20px 50px rgba(2,6,23,0.35)}
+
+    @media (max-width:720px){.hero{padding:18px}.hero h1{font-size:22px}}
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="brand">
+      <div class="logo">N</div>
+      <div>
+        <div class="site-title">Noor — Personal Tailoring & Styling</div>
+        <div style="font-size:13px;color:var(--muted)">Consultation • Tailoring • Delivery</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div style="font-size:14px;color:var(--muted)">Have questions? <strong style="color:var(--accent)">+91 98765 43210</strong></div>
+      <button class="btn btn-ghost" onclick="openModal('book')">Book Consultation</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Clear pricing. Expert tailoring. One simple process.</h1>
+        <p>Start with a one-time consultation of <strong>₹250</strong> — this begins your design & measurement process. Proceeding with tailoring applies the consultation fee toward your final bill.</p>
+
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+          <button class="btn btn-primary" onclick="openModal('book')">Book Consultation — ₹250</button>
+          <a href="#pricing" class="btn">See Pricing</a>
+        </div>
+
+        <div class="estimate" aria-hidden="false">
+          <div style="font-weight:700;margin-bottom:8px">Quick estimate</div>
+          <div class="row" style="margin-bottom:8px">
+            <label for="category">Choose category</label>
+            <select id="category" style="margin-left:auto;min-width:180px" onchange="updateEstimate()">
+              <option value="basic">Basic Outfits (₹700–₹1,000)</option>
+              <option value="semi">Semi-Designer (₹1200–₹2000)</option>
+              <option value="designer">Designer/Custom (₹2500+)</option>
+            </select>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:6px">
+            <div><input type="checkbox" id="express" onchange="updateEstimate()"/> <label for="express">Express delivery (within 3 days)</label></div>
+            <div style="text-align:right">Estimated total: <span id="estimateVal" class="price">₹950</span></div>
+          </div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">Note: All estimates include the consultation fee (₹250). Final price depends on fabric, detailing, and alterations.</div>
+        </div>
+
+      </div>
+
+      <div class="hero-right">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='220'><rect rx='16' width='100%' height='100%' fill='%23ffe5e5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' fill='%23be0909' font-size='20'>Noor — Tailoring</text></svg>" alt="noor" style="width:100%;border-radius:12px;display:block;"/>
+      </div>
+    </section>
+
+    <section id="pricing" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0">Tailoring Pricing</h2>
+        <div style="color:#be0909 ;font-size:14px">Consultation charge: <strong>₹250 (required)</strong> — deducted from final bill if you proceed.</div>
+      </div>
+
+      <div class="pricing-grid" style="margin-top:14px">
+        <div class="card">
+          <h3>Basic Outfits</h3>
+          <div class="price">₹700 — ₹1,000</div>
+          <div class="range">Simple stitching for kurtis, shirts, tops, trousers.</div>
+          <ul class="list">
+            <li>Standard finishing</li>
+            <li>Included 1 alteration</li>
+            <li>Turnaround: 5–7 days</li>
+          </ul>
+          <div class="note">Ideal for everyday wear and minimal detailing.</div>
+        </div>
+
+        <div class="card">
+          <h3>Semi-Designer</h3>
+          <div class="price">₹1,200 — ₹2,000</div>
+          <div class="range">Dresses, lehengas, jackets with moderate detailing.</div>
+          <ul class="list">
+            <li>Premium finishes</li>
+            <li>Hand embellishments charged extra</li>
+            <li>Turnaround: 7–14 days</li>
+          </ul>
+          <div class="note">Great for parties and small events.</div>
+        </div>
+
+        <div class="card">
+          <h3>Designer / Custom</h3>
+          <div class="price">₹2,500+</div>
+          <div class="range">Bridal wear, heavy embroidery, unique patterns.</div>
+          <ul class="list">
+            <li>Fully bespoke design</li>
+            <li>Multiple fittings</li>
+            <li>Turnaround: varies by design</li>
+          </ul>
+          <div class="note">Price depends on craftsmanship & materials.</div>
+        </div>
+
+        <div class="card">
+          <h3>Express Delivery</h3>
+          <div class="price">₹500</div>
+          <div class="range">Delivery within 3 days (subject to workload).</div>
+          <ul class="list">
+            <li>Availability limited</li>
+            <li>Extra charges for rush fabrics</li>
+          </ul>
+          <div class="note">Add this to any order to speed up turnaround.</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="openModal('book')">Pay ₹250 & Start Process</button>
+        <button class="btn" onclick="openModal('contact')">Contact Support</button>
+      </div>
+
+    </section>
+
+    <section style="margin-top:26px">
+      <h3>How it works</h3>
+      <ol style="color:var(--muted)">
+        <li>Pay the consultation fee (₹250) to begin the process — measurements & styling.</li>
+        <li>Choose your outfit category and fabric. We provide samples and recommendations.</li>
+        <li>Approve the quote. Consultation fee is deducted from the final tailoring charge.</li>
+        <li>We stitch, fit, and deliver. Add express delivery if you need it fast.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    © Noor Tailoring — Made with care • <span style="color:var(--muted)">Privacy</span>
+  </footer>
+
+  <!-- Modal markup -->
+  <div id="modalBackdrop" class="modal-backdrop" onclick="closeModal(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div id="modalContent">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalContent = document.getElementById('modalContent');
+
+    function openModal(type){
+      if(type==='book'){
+        modalContent.innerHTML = `
+          <h2 id="modalTitle">Book Consultation — ₹250</h2>
+          <p style="color:var(--muted)">Pay ₹250 to start the full measurement & design process. This fee will be deducted from your final tailoring bill if you proceed.</p>
+          <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+            <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="confirmBooking()">Proceed to Payment</button>
+          </div>
+        `;
+      } else if(type==='contact'){
+        modalContent.innerHTML = `
+          <h2 id="modalTitle">Contact Support</h2>
+          <p style="color:var(--muted)">Message us at <strong>support@noor.example</strong> or call +91 98765 43210. We're available 10:00 — 18:00 IST.</p>
+          <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+          </div>
+        `;
+      }
+      modalBackdrop.style.display='flex';
+    }
+
+    function closeModal(e){
+      if(e && e.target !== modalBackdrop) return;
+      modalBackdrop.style.display='none';
+    }
+
+    function confirmBooking(){
+      modalContent.innerHTML = `
+        <h2>Payment</h2>
+        <p style="color:var(--muted)">(Demo) You will be redirected to a payment gateway in production. For now, click confirm to simulate payment.</p>
+        <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+          <button class="btn btn-ghost" onclick="openModal('book')">Back</button>
+          <button class="btn btn-primary" onclick="completeBooking()">Confirm Payment ₹250</button>
+        </div>
+      `;
+    }
+
+    function completeBooking(){
+      modalContent.innerHTML = `
+        <h2>All set!</h2>
+        <p style="color:var(--muted)">We've received your consultation fee (₹250). Check your email for next steps — measurement and styling appointment.</p>
+        <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
+          <button class="btn btn-primary" onclick="closeModal()">Close</button>
+        </div>
+      `;
+    }
+
+    const estimates = {
+      basic: [700,1000],
+      semi: [1200,2000],
+      designer: [2500,3500]
+    };
+
+    function updateEstimate(){
+      const category = document.getElementById('category').value;
+      const express = document.getElementById('express').checked;
+      const range = estimates[category];
+      let base = range[0];
+      let total = base + 250 + (express?500:0);
+      document.getElementById('estimateVal').textContent = `₹${total}`;
+    }
+
+    updateEstimate();
+  </script>
+</body>
+</html>

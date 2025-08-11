@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor – Your Fashion Advisor</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/noor-logo.png.png">
+
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; }
+    header { background: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: #d62828; }
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; }
+    .cta-btn { background: #d62828; color: white; padding: 0.5rem 1rem; border-radius: 5px; }
+
+    
+    header { 
+        background: white; 
+        padding: 1rem 2rem; 
+        position: sticky; 
+        top: 0; 
+        z-index: 100; 
+        border-bottom: 1px solid #eee; 
+    }
+    .nav-container { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+    .logo { 
+        font-size: 1.5rem; 
+        font-weight: 700; 
+        color: #d62828; 
+    }
+    nav ul { 
+        display: flex; 
+        list-style: none; 
+        gap: 1.5rem; 
+    }
+    nav ul li a { 
+        text-decoration: none; 
+        color: #333; 
+        font-weight: 500; 
+    }
+    .cta-btn { 
+        background: #d62828; 
+        color: white; 
+        padding: 0.5rem 1rem; 
+        border-radius: 5px; 
+    }
+    @media (max-width: 768px) {
+        nav ul { 
+            display: none; 
+            flex-direction: column; 
+            background: white; 
+            position: absolute; 
+            top: 60px; 
+            right: 20px; 
+            padding: 1rem; 
+            border: 1px solid #eee; 
+        }
+        nav ul.active { 
+            display: flex; 
+        }
+        .menu-toggle { 
+            display: block; 
+            cursor: pointer; 
+        }
+    }
+    @media (min-width: 769px) {
+        .menu-toggle { 
+            display: none; 
+        }
+    }
+
+
+        /* Hero Section */
+        .how-hero {
+            background: linear-gradient(to right, #ffe5e5, #f8cfcf);
+            text-align: center;
+            padding: 60px 20px;
+            color: #333;
+        }
+        .how-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #be0909;
+        }
+        .how-hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+
+
+    /* Hero */
+    .hero { background: #ffe5e5; padding: 4rem 2rem; text-align: center; }
+    .hero h1 { font-size: 2rem; color: #d62828; }
+    .hero p { margin: 1rem 0; font-size: 1.1rem; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .hero-buttons a { padding: 0.75rem 1.5rem; border-radius: 5px; font-weight: 500; text-decoration: none; }
+    .btn-primary { background: #d62828; color: white; }
+    .btn-outline { border: 2px solid #d62828; 
+        color: #d62828;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: inline-block;
+    }
+    .btn-outline:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #why {
+        padding : 3rem 2rem;
+        text-align: center;
+    }
+    .why-us {
+        padding: 3rem 2rem;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        text-align: center;
+        align-items: stretch; /* Make all grid items equal height */
+    }
+    .why-us div {
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;              /* Ensure content aligns well inside */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    }
+    
+    .why-us div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    }
+    /* heading of why us*/
+    .section-title {
+        font-family: 'Dancing Script', cursive; /* Stylish font you wanted */
+        font-size: 2.5rem;
+        color: #d62828;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    /* Trial */
+    .trial { background: #d62828; color: white; text-align: center; padding: 3rem 2rem; }
+    .trial h2 { margin-bottom: 1rem; }
+    .trial a { display: inline-block; 
+        margin-top: 1rem; 
+        padding: 0.75rem 1.5rem; 
+        background: white; 
+        color: #d62828; 
+        border-radius: 5px; 
+        text-decoration: none; 
+        font-weight: 500;
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* added */
+    }
+
+    .trial a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* added */
+    }
+
+
+    /* Reviews */
+    .reviews { padding: 3rem 2rem; background: #f9f9f9; }
+    .review-list { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .review { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .review img { width: 100%; border-radius: 8px; }
+    .stars { color: gold; margin: 0.5rem 0; }
+
+    .review img {
+        width: 80px;       /* smaller width */
+        height: 80px;      /* smaller height */
+        border-radius: 50%; /* makes the image circular */
+        object-fit: cover;  /* crop/scale image nicely */
+        margin: 0 auto 1rem auto; /* center horizontally and add space below */
+        display: block;
+    }
+
+    /* Footer */
+    footer { background: #333; color: white; padding: 2rem; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: #fff; text-decoration: none; }
+
+    
+
+
+    /* Live Chat */
+    .live-chat { position: fixed; bottom: 20px; right: 20px; background: #d62828; color: white; padding: 0.75rem 1rem; border-radius: 50px; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: white; position: absolute; top: 60px; right: 20px; padding: 1rem; border: 1px solid #eee; }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; cursor: pointer; }
+    }
+    @media (min-width: 769px) {
+      .menu-toggle { display: none; }
+    }
+
+    
+/* Modal overlay */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center; align-items: center;
+  }
+
+  /* Modal content */
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Form inputs */
+  input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Buttons */
+  button {
+    background: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover { background: darkred; }
+
+  /* Tab links */
+  .tab-links {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+  }
+  .tab-links button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .tab-links button.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="noor-logo.png.png" alt="Noor" style="height:60px;">
+        </div>
+      <div class="menu-toggle">☰</div>
+      <nav>
+        <ul>
+          <li><a href="AboutUs.html">About Us</a></li>
+          <li><a href="Materials.html">Materials & Quality</a></li>
+          <li><a href="PricingModel.html">Pricing</a></li>
+          <li><a href="TMO.html">Track My Order</a></li>
+          <li><a href="#stories">Style Stories</a></li>
+          <li><button id="getStartedBtn" class="cta-btn">Get Started</button></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Your Personal Fashion Consultant + Tailoring Service</h1>
+    <p>From concept to doorstep — Noor ensures your outfit fits your body, style, and timeline perfectly.</p>
+    <div class="hero-buttons">
+      <a href="HowItWorks.html" class="btn-outline">Explore How It Works</a>
+    </div>
+  </section>
+
+
+
+
+
+  <section id="why">
+    <h2 class="section-title">Why Us?</h2>
+    <div class="why-us">
+        <div>
+            <h3>Personalized Design</h3>
+            <p>Outfits tailored to your body type & style preferences.</p>
+        </div>
+        <div>
+            <h3>End-to-End Service</h3>
+            <p>From fabric sourcing to doorstep delivery.</p>
+        </div>
+        <div>
+            <h3>Fit Guarantee</h3>
+            <p>Up to 2 free alterations if needed.</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="trial" id="trial">
+    <h2>Try Noor for Just ₹250</h2>
+    <p>Get 3 personalized sessions with a fashion designer, material recommendations, and complete outfit planning.</p>
+    <a href="#signup">Book My Trial</a>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <h2 style="text-align:center; margin-bottom: 2rem;">What Our Clients Say</h2>
+    <div class="review-list">
+      <div class="review">
+        <img src="images/Client2.jpg" alt="Client">
+        <div class="stars">★★★★★</div>
+        <p>"Noor made my wedding outfit exactly how I dreamed it!"</p>
+      </div>
+      <div class="review">
+        <img src="images/Client3.png" alt="Client">
+        <div class="stars">★★★★★</div>
+        <p>"Best tailoring experience I've had. Such service  Highly recommended."</p>
+      </div>
+      <div class="review">
+        <img src="images/Client1.png" alt="Client">
+        <div class="stars">★★★★★</div>
+        <p>"Would never find another destination that provides such high class experience. Love it!"</p>
+      </div>
+    </div>
+  </section>
+
+<footer style="background: #d8e2dc; padding: 2rem; font-family: 'Poppins', sans-serif;">
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 2rem; color: #333;">
+        <div style="flex: 1 1 200px; min-width: 180px;">
+            <h3 style="font-weight: 700;">Get the latest updates from Noor</h3>
+            <p>Subscribe to get Email Updates!</p>
+            <form class="footer-subscribe">
+              <input type="email" placeholder="Email">
+              <button type="submit">Subscribe</button>
+            </form>
+
+            <div style="margin-top: 1rem; font-size: 0.9rem;">
+                <!-- Social Icons - you can replace with actual icons -->
+                <a href="#" style="margin-right: 0.5rem; color: #d62828;">Facebook</a>
+                <a href="#" style="margin-right: 0.5rem; color: #d62828;">LinkedIn</a>
+                <a href="#" style="margin-right: 0.5rem; color: #d62828;">Instagram</a>
+                <a href="#" style="margin-right: 0.5rem; color: #d62828;">YouTube</a>
+        </div>
+    </div>
+
+    <div style="flex: 1 1 150px; min-width: 150px;">
+      <h3 style="font-weight: 700;">Help Centre</h3>
+      <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
+        <li><a href="#" style="color: #333; text-decoration: none;">Terms & Conditions</a></li>
+        <li><a href="#" style="color: #333; text-decoration: none;">FAQs</a></li>
+        <li><a href="#" style="color: #333; text-decoration: none;">Account</a></li>
+        <li><a href="#" style="color: #333; text-decoration: none;">Privacy Policy</a></li>
+        <li><a href="#" style="color: #333; text-decoration: none;">Shipping Policy</a></li>
+      </ul>
+    </div>
+
+    <div style="flex: 1 1 180px; min-width: 180px;">
+      <h3 style="font-weight: 700;">Contact Us</h3>
+      <p>Raise a Query</p>
+      <p>📞 +91-7012650456 (Mon-Sat: 10am-6pm)</p>
+      <p>✉️ style@noor.in</p>
+      <p>The Office Pass, Tower B,<br>11th Floor, Unitech Cyber Park, Sector 39,<br>Gurugram - 22, HR</p>
+    </div>
+
+    <div style="flex: 1 1 150px; min-width: 150px;">
+      <h3 style="font-weight: 700;">Work With Us</h3>
+      <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
+        <li><a href="#" style="color: #333; text-decoration: none;">Join the Team</a></li>
+      </ul>
+    </div>
+
+  <div style="text-align: center; color: #555; margin-top: 2rem; font-size: 0.9rem; width: 100%;">
+  © 2025 Noor. All rights reserved.
+</div>
+
+</footer>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+  </script>
+  <!-- 💬 Chat Widget -->
+<div id="chat-widget">
+  <div class="chat-button">
+    💬
+  </div>
+  <div class="chat-greeting">
+    Hi, I’m Nandu — your assistant! How can I help you?
+  </div>
+  <div class="chat-box">
+    <div class="chat-header">
+      Chat with Nandu
+      <span class="chat-close">&times;</span>
+    </div>
+    <div class="chat-body">
+      <p>Hello! How can I help you today?</p>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message..." />
+      <button>Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- 💬 Chat Widget Styles -->
+<style>
+  /* Container */
+  #chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+  }
+
+  /* Chat Button */
+  .chat-button {
+    background: #d62828;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* Greeting Tooltip */
+  .chat-greeting {
+    position: absolute;
+    right: 70px;
+    bottom: 15px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    max-width: 220px;
+  }
+
+  /* Chat Box */
+  .chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    background: #d62828;
+    color: white;
+    padding: 0.7rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chat-header .chat-close {
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .chat-body {
+    padding: 1rem;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+
+  .chat-input input {
+    flex-grow: 1;
+    border: none;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .chat-input button {
+    background: #d62828;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  /* Hover Greeting */
+  .chat-button:hover + .chat-greeting {
+    opacity: 1;
+  }
+</style>
+
+<!-- 💬 Chat Widget Script -->
+<script>
+  const chatButton = document.querySelector(".chat-button");
+  const chatBox = document.querySelector(".chat-box");
+  const chatClose = document.querySelector(".chat-close");
+
+  chatButton.addEventListener("click", () => {
+    chatBox.style.display = "flex";
+  });
+
+  chatClose.addEventListener("click", () => {
+    chatBox.style.display = "none";
+  });
+
+  // Auto show greeting for 5s when page loads
+  const greeting = document.querySelector(".chat-greeting");
+  setTimeout(() => {
+    greeting.style.opacity = "1";
+    setTimeout(() => greeting.style.opacity = "0", 5000);
+  }, 2000);
+</script>
+
+
+
+<!-- Modal Structure -->
+<div id="accountModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="signup">Create Account</button>
+      <button class="tab-btn" data-tab="login">Login</button>
+    </div>
+    
+    <!-- Sign Up Form -->
+    <div id="signup" class="tab-content active">
+      <h2>Create Account</h2>
+      <form id="signupForm">
+        <label>Name</label>
+        <input type="text" required>
+        
+        <label>Email</label>
+        <input type="email" required>
+        
+        <label>Phone</label>
+        <input type="tel" required>
+        
+        <label>Password</label>
+        <input type="password" required>
+        
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    
+    <!-- Login Form -->
+    <div id="login" class="tab-content">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" required>
+        
+        <label>Password</label>
+        <input type="password" required>
+        
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+
+    <!-- Tab Navigation -->
+    <div class="tab-links">
+      <button id="signupTab" class="active">Create Account</button>
+      <button id="loginTab">Login</button>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="password" placeholder="Create Password" required>
+      <button>Create Account</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" style="display: none;">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button>Login</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Get modal and buttons
+const modal = document.getElementById("authModal");
+const getStartedBtn = document.getElementById("getStartedBtn");
+const closeModal = document.getElementById("closeModal");
+
+const signupTab = document.getElementById("signupTab");
+const loginTab = document.getElementById("loginTab");
+const signupForm = document.getElementById("signupForm");
+const loginForm = document.getElementById("loginForm");
+
+// Open modal
+getStartedBtn.onclick = () => { modal.style.display = "flex"; }
+
+// Close modal
+closeModal.onclick = () => { modal.style.display = "none"; }
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+// Tab switching
+signupTab.onclick = () => {
+  signupForm.style.display = "block";
+  loginForm.style.display = "none";
+  signupTab.classList.add("active");
+  loginTab.classList.remove("active");
+}
+
+loginTab.onclick = () => {
+  signupForm.style.display = "none";
+  loginForm.style.display = "block";
+  loginTab.classList.add("active");
+  signupTab.classList.remove("active");
+}
+</script>
+
+
+</body>
+</html>

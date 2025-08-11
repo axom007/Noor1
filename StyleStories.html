@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Styling Stories - Noor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="images/noor-logo.png.png">
+<style>
+  :root {
+    --primary-red: #d62828;
+    --primary-red-dark: #a61e1e;
+    --text-dark: #222;
+    --text-light: #fff;
+    --bg-light: #f9f9f9;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-red);
+    letter-spacing: 1px;
+  }
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-red);
+    transition: width 0.3s;
+  }
+  nav a:hover::after {
+    width: 100%;
+  }
+  .hero {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: nowrap; /* prevent wrapping */
+    gap: 2rem;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: flex-start; /* align content to left */
+}
+
+.hero img {
+  flex: 0 0 auto;       /* don't grow or shrink */
+  width: 280px;         /* fixed width for smaller image */
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease;
+  object-fit: cover;
+}
+
+
+  .hero img:hover {
+    transform: scale(1.03);
+  }
+  .hero-text {
+    flex: 1 1 400px;
+    animation: fadeIn 1s ease forwards;
+  }
+  .hero-text span {
+    color: var(--primary-red);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  .hero-text h1 {
+    margin: 0.6rem 0;
+    font-size: 2.4rem;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.3;
+  }
+  .hero-text p {
+    margin-bottom: 1.2rem;
+    color: #555;
+  }
+  .read-more {
+    display: inline-block;
+    background: var(--primary-red);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .read-more:hover {
+    background: var(--primary-red-dark);
+    transform: translateY(-2px);
+  }
+  .posts {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+  .posts h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+  }
+  .posts h2::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background: var(--primary-red);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 2rem;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover img {
+    transform: scale(1.05);
+  }
+  .card-body {
+    padding: 1rem 1.2rem;
+    flex: 1;
+  }
+  .card-body span {
+    color: var(--primary-red);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .card-body h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  }
+  .subscribe-section {
+    background: #222;
+    color: white;
+    padding: 2rem;
+  }
+  .subscribe-section h4 {
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+  }
+  .subscribe-section p {
+    margin-bottom: 1rem;
+  }
+  .subscribe-form {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  .subscribe-form input[type=email] {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+  }
+  .subscribe-form button {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  .subscribe-form button:hover {
+    background: var(--primary-red-dark);
+  }
+  .subscribe-social a {
+    color: white;
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
+  }
+  .subscribe-social a:hover {
+    color: var(--primary-red);
+  }
+
+  /* Updated Footer Styles */
+  footer {
+    background: #222;
+    color: white;
+    padding: 2rem 4rem;
+  }
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+    flex-wrap: nowrap;
+  }
+  .footer-col {
+    flex: 1;
+  }
+  .footer-col h4 {
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+  }
+  .footer-col ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .footer-col ul li a:hover {
+    text-decoration: underline;
+  }
+  .footer-col p {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    footer {
+      padding: 2rem 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo">Noor Stories</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Materials.html" class="hover:text-[var(--noor-red)] transition">Materials & Quality</a></li>
+      <li><a href="PricingModel.html" class="hover:text-[var(--noor-red)] transition">Pricing</a></li>
+      <li><a href="TMO.html" class="hover:text-[var(--noor-red)] transition">Track My Order</a></li>
+    </ul>
+  </nav>
+</header>
+<section class="hero" data-animate>
+  <img src="images/Fam.jpg" alt="Featured Post">
+  <div class="hero-text">
+    <span>Featured</span>
+    <h1>Ready, Set, Glam! – Your Ultimate Photoshoot Makeup Guide</h1>
+    <p>Get the perfect look for your next shoot with these essential makeup tips and tricks that will have you camera-ready.</p>
+    <a href="blog.html" class="read-more">Read More</a>
+  </div>
+</section>
+<section class="posts">
+  <h2>Featured Posts</h2>
+  <div class="grid">
+    <div class="card" data-animate>
+      <img src="images/wed.jpg" alt="Post 1">
+      <div class="card-body">
+        <span>Featured</span>
+        <h3>Vibrant Vows – Exploring the Top Indian Wedding Color Trends of 2023</h3>
+      </div>
+    </div>
+    <div class="card" data-animate>
+      <img src="images/makeup.png" alt="Post 2">
+      <div class="card-body">
+        <span>Featured</span>
+        <h3>Makeup 101 – The Essential Dos and Don’ts Every Beginner Needs</h3>
+      </div>
+    </div>
+    <div class="card" data-animate>
+      <img src="images/nails.png" alt="Post 3">
+      <div class="card-body">
+        <span>Featured</span>
+        <h3>Gel Glam 101 – The Complete Guide to Mastering Gel Nails Like a Pro</h3>
+      </div>
+    </div>
+    <div class="card" data-animate>
+      <img src="images/BOY.png" alt="Post 4">
+      <div class="card-body">
+        <span>Featured</span>
+        <h3>Elevate Your Style Game – Fashion Tips for Men’s Body Shapes</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Get the latest from Noor</h4>
+      <p>Subscribe to get the latest style tips & trends from Noor — straight to your inbox.</p>
+      <form class="subscribe-form" style="margin-bottom: 1rem; display: flex;">
+        <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.5rem; border-radius: 4px 0 0 4px; border: none;">
+        <button type="submit" style="background: var(--primary-red); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0 4px 4px 0; cursor: pointer;">Subscribe</button>
+      </form>
+      <div class="subscribe-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>Email: care@noor.com</p>
+      <p>Phone: +91-XXXXXXXXXX</p>
+      <p>Mon - Sat: 10am - 6pm</p>
+      <p>Address: Example Address, City, State</p>
+    </div>
+  </div>
+</footer>
+<script>
+  const animateEls = document.querySelectorAll('[data-animate]');
+  const onScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    animateEls.forEach(el => {
+      const boxTop = el.getBoundingClientRect().top;
+      if(boxTop < triggerBottom) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Estimate Page</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #333;
+    overflow-x: hidden;
+  }
+  nav {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #e67e22;
+  }
+  header {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1600&q=80') center/cover;
+    color: white;
+    position: relative;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+  }
+  header h1, header p {
+    position: relative;
+    z-index: 1;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    animation: fadeInDown 1s ease forwards;
+  }
+  header p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    animation: fadeInUp 1s ease forwards;
+  }
+  main {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    animation: fadeIn 0.8s ease forwards;
+  }
+  h2 {
+    text-align: center;
+    color: #e67e22;
+    margin-bottom: 2rem;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  select, input[type="checkbox"] {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  .estimate-output {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    color: #27ae60;
+  }
+  .openModalBtn {
+    display: block;
+    margin: 2rem auto 0;
+    background: #e67e22;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .openModalBtn:hover {
+    background: #cf711f;
+    transform: translateY(-2px);
+  }
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  .feature {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    flex: 1 1 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .feature:hover {
+    transform: translateY(-5px);
+  }
+  .feature img {
+    width: 50px;
+    margin-bottom: 1rem;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    padding-top: 100px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+  }
+  .modal-content {
+    background: #fff;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    animation: slideIn 0.5s ease forwards;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close:hover { color: #000; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><strong>MyBrand</strong></div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>Get Your Custom Estimate</h1>
+  <p>Fast, transparent, and tailored pricing for your needs.</p>
+</header>
+
+<main>
+  <h2>Estimate Calculator</h2>
+  <label for="category">Choose category:</label>
+  <select id="category" onchange="updateEstimate()">
+    <option value="basic">Basic</option>
+    <option value="semi">Semi-Professional</option>
+    <option value="designer">Designer</option>
+  </select>
+
+  <label>
+    <input type="checkbox" id="express" onchange="updateEstimate()"> Express Delivery (+₹500)
+  </label>
+
+  <div class="estimate-output" id="estimateVal">₹0</div>
+
+  <button class="openModalBtn" onclick="openModal()">Request a Quote</button>
+
+  <div class="features">
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/000000/light-on--v1.png" alt="Idea Icon">
+      <h3>Creative Solutions</h3>
+      <p>We bring fresh ideas to make your project stand out.</p>
+    </div>
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/000000/clock.png" alt="Clock Icon">
+      <h3>Fast Delivery</h3>
+      <p>Get your work delivered on time, every time.</p>
+    </div>
+    <div class="feature">
+      <img src="https://img.icons8.com/ios-filled/50/000000/money-bag-euro.png" alt="Money Icon">
+      <h3>Affordable Pricing</h3>
+      <p>High-quality service without breaking the bank.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div id="quoteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Request a Custom Quote</h2>
+    <label>Name:</label>
+    <input type="text" placeholder="Your Name" style="width:100%;padding:0.5rem;margin-bottom:1rem;">
+    <label>Email:</label>
+    <input type="email" placeholder="Your Email" style="width:100%;padding:0.5rem;margin-bottom:1rem;">
+    <label>Details:</label>
+    <textarea placeholder="Project details..." style="width:100%;padding:0.5rem;height:100px;"></textarea>
+    <button class="openModalBtn" style="margin-top:1rem;" onclick="closeModal()">Submit</button>
+  </div>
+</div>
+
+<script>
+  const estimates = {
+    basic: [700,1000],
+    semi: [1200,2000],
+    designer: [2500,3500]
+  };
+
+  let currentPrice = 0;
+
+  function animatePrice(start, end, duration) {
+    let startTime = null;
+    function animation(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const value = Math.floor(progress * (end - start) + start);
+      document.getElementById('estimateVal').textContent = `₹${value}`;
+      if (progress < 1) {
+        requestAnimationFrame(animation);
+      }
+    }
+    requestAnimationFrame(animation);
+  }
+
+  function updateEstimate(){
+    const category = document.getElementById('category').value;
+    const express = document.getElementById('express').checked;
+    const range = estimates[category];
+    let base = range[0];
+    let total = base + 250 + (express?500:0);
+    animatePrice(currentPrice, total, 500);
+    currentPrice = total;
+  }
+
+  function openModal(){
+    document.getElementById('quoteModal').style.display = "block";
+  }
+  function closeModal(){
+    document.getElementById('quoteModal').style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('quoteModal')) {
+      closeModal();
+    }
+  }
+
+  updateEstimate();
+</script>
+
+</body>
+</html>
