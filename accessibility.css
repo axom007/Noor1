@@ -1,0 +1,25 @@
+/* accessibility.css — styles for screen reader mode */
+
+.sr-mode * {
+  /* Ensure visible focus outline for keyboard users */
+  outline: 2px solid #000 !important;
+  outline-offset: 2px;
+}
+
+.sr-mode a, 
+.sr-mode button {
+  /* Bigger touch target */
+  padding: 0.5em 0.75em;
+}
+
+.sr-mode body {
+  /* High contrast mode */
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.sr-mode img {
+  /* Ensure alt text shows if no image */
+  max-width: 100%;
+  height: auto;
+}
