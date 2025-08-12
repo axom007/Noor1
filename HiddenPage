@@ -28,7 +28,6 @@
 
     .container{width:100%;max-width:var(--max-width)}
 
-    /* Navigation Bar */
     nav{
       background:var(--accent);
       color:#fff;
@@ -71,7 +70,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Navigation Bar -->
     <nav>
       <h1>Hidden Page</h1>
     </nav>
@@ -174,6 +172,12 @@ Require valid-user
         <p class="muted">If you cannot configure server auth, at minimum ensure the page has <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code> and keep the URL unlinked.</p>
       </section>
 
+      <section class="card">
+        <h2 style="color:var(--accent);margin-top:0">Site Map</h2>
+        <p class="muted">View the full site map for the Noor project:</p>
+        <p><a href="https://octopus.do/h5rq7rhxcbk" target="_blank" style="color:var(--accent);text-decoration:underline">Open Site Map</a></p>
+      </section>
+
       <footer class="card">
         <div class="muted">Instructor access note: For grading, share the full obscure URL with your instructor and (if used) the temporary key. Recommended: remove the file or revoke access after grading.</div>
       </footer>
@@ -209,3 +213,4 @@ Require valid-user
   </script>
 </body>
 </html>
+
