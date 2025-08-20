@@ -2,34 +2,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WBD Project Requirements</title>
 <style>
+    /* Match HiddenPage theme */
+    :root{
+        --brand-red: #be0909;
+        --bg: transparent; /* allow blending into parent card via iframe */
+        --text: #111;
+        --muted: #666;
+        --radius: 12px;
+        --card-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        --accent: var(--brand-red);
+    }
+
+    *{box-sizing:border-box}
+
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #333;
-        margin: 20px;
-        line-height: 1.4;
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px; /* inner breathing room inside iframe */
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
     }
     .container {
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
+        width: 100%;
     }
     .column {
         flex: 1;
-        min-width: 400px;
+        min-width: 320px;
     }
     h1 {
         text-align: center;
-        color: #2c3e50;
-        margin-bottom: 10px;
+        color: var(--accent);
+        margin: 0 0 12px;
+        font-size: 22px;
+        font-weight: 700;
     }
     h2 {
         margin-top: 20px;
-        color: #1a5276;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 3px;
+        color: var(--accent);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 4px;
         font-size: 1.05em;
     }
     ul {
@@ -39,39 +58,45 @@
     }
     li {
         background: #fff;
-        margin-bottom: 4px;
-        padding: 5px 8px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        font-size: 0.9em;
+        margin-bottom: 6px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        font-size: 0.92em;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-    li:nth-child(even) {
-        background: #f1f4f8;
-    }
-    .task-text {
-        display: block;
-    }
-    .status-dropdown {
-        margin-top: 2px;
-    }
+    li:nth-child(even) { background: #fafafa; }
+    .task-text { display: block; }
+    .status-dropdown { margin-top: 6px; }
     select {
-        padding: 2px 4px;
-        font-size: 0.85em;
-        border: 1px solid #ccc;
-        border-radius: 3px;
+        padding: 6px 8px;
+        font-size: 0.9em;
+        border: 1px solid #ddd;
+        border-radius: 6px;
         background-color: white;
         cursor: pointer;
-        min-width: 120px;
+        min-width: 140px;
     }
     select:focus {
-        outline: 2px solid #007acc;
-        border-color: #007acc;
+        outline: 2px solid var(--accent);
+        border-color: var(--accent);
     }
-</style>
+
+    /* Subtle section card look to fit HiddenPage aesthetics */
+    .sheet{ background:#fff; border-radius: var(--radius); padding: 16px; box-shadow: var(--card-shadow); }
+    .lead { color: var(--muted); font-size: 13px; margin: 4px 0 12px; text-align:center; }
+
+    @media (max-width:600px){
+      body{ padding: 16px; }
+      h1{ font-size: 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<h1>WBD Project Requirements</h1>
+<div class="sheet">
+    <h1>WBD Project Requirements</h1>
+    <div class="lead">Interactive checklist aligned to project rubric</div>
 
 <div class="container">
     <div class="column">
